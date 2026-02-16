@@ -3,28 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ERHS Lost and Found Website Output</title>
     <link rel="stylesheet" href="stylelostandfound.css">
     <script src="scriptlostandfound.js"></script>
 </head>
 <body class="thirdscreen">
     
-        <nav id="nav-bar">
-  <a class="nav-link" href="#Home">Home</a>
-  <a class="nav-link" href="#About">About</a>
+  <nav id="nav-bar">
+  <a class="nav-link" href="#Home" onclick="screens0()">Home</a>
+  <a class="nav-link" href="#About" onclick="screensAbout()">About</a>
   <a class="nav-link" href="#Contacts">Contact</a>
   <a class="nav-link" href="#Support">Support</a>
   </nav>
   
-    <h1>See Lost Items</h1>
-  <div class="search-container">
-    <input type="text" placeholder="Search.." name="search" class="search1">
-      <button type="submit"><i class="searchicon"></i></button>
-      </div>
-      <div class="Item1">
-      </div>
+  <h1>See Lost Items</h1>
+  
+  <div class="filters">
+    <label for="filterCategory">Filter by category:</label>
+    <select id="filterCategory">
+      <option value="">All categories</option>
+    </select>
 
-  <div id="output"></div>
+    <label for="filterLocation">Filter by location:</label>
+    <select id="filterLocation">
+      <option value="">All locations</option>
+    </select>
 
+    <button id="applyFilterBtn" type="button">Apply</button>
+    <button id="clearFilterBtn" type="button">Clear</button>
+  </div>
+
+<div id="output"></div>
 </body>
 </html>

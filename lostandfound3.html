@@ -8,7 +8,7 @@
     <script src="scriptlostandfound.js"></script>
 </head>
 <body class="thirdscreen">
-    
+    <img id="logo" src="https://cdnsm5-ss18.sharpschool.com/UserFiles/Servers/Server_25708315/Image/mustangLogo2.png">
   <nav id="nav-bar">
   <a class="nav-link" href="#Home" onclick="screens0()">Home</a>
   <a class="nav-link" href="#About" onclick="screensAbout()">About</a>
@@ -16,23 +16,32 @@
   <a class="nav-link" href="#Support">Support</a>
   </nav>
   
-  <h1>See Lost Items</h1>
+  <h1 class="subtitle2">See Lost Items</h1>
   
-  <div class="filters">
-    <label for="filterCategory">Filter by category:</label>
-    <select id="filterCategory">
-      <option value="">All categories</option>
-    </select>
+  <div class="form-row">
+    <div class="form-block">
+      <label for="filterCategory">Filter by category:</label>
+      <select id="filterCategory">
+        <option value="">All categories</option>
+      </select>
+    </div>
 
-    <label for="filterLocation">Filter by location:</label>
-    <select id="filterLocation">
-      <option value="">All locations</option>
-    </select>
+    <div class="form-block">
+      <label for="filterLocation">Filter by location:</label>
+      <select id="filterLocation">
+        <option value="">All locations</option>
+      </select>
+    </div>
 
-    <button id="applyFilterBtn" type="button">Apply</button>
-    <button id="clearFilterBtn" type="button">Clear</button>
+    <div class="form-block actions-block">
+      <button id="applyFilterBtn" type="button">Apply</button>
+      <button id="clearFilterBtn" type="button">Clear</button>
+      <button id="clearAllBtn" type="button">Clear All</button>
+    </div>
   </div>
 
-<div id="output"></div>
+  <div id="output" class="output-block form-block">
+
+  </div>
 </body>
 </html>

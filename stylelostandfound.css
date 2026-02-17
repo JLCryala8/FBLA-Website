@@ -12,7 +12,13 @@ background-image: radial-gradient( circle farthest-corner at 3.7% 49.8%,  rgba(1
  display: flex;
  justify-content: center;
  align-items: center;
-
+ text-align: center;
+ background-image: linear-gradient(180deg, #001f3f 0%, #003366 55%, #335e9a 100%);
+ -webkit-background-clip: text;
+ background-clip: text;
+ -webkit-text-fill-color: transparent;
+ background-position: center bottom;
+ background-size: 100% 160%;
 }
 
 .subtitle1 {
@@ -22,19 +28,101 @@ background-image: radial-gradient( circle farthest-corner at 3.7% 49.8%,  rgba(1
  display: flex;
  justify-content: center;
  align-items: center;
- 
+ text-align: center;
+ background-image: linear-gradient(180deg, #0f4a78 0%, #3972a0 60%, #8aa6d1 100%);
+ -webkit-background-clip: text;
+ background-clip: text;
+ -webkit-text-fill-color: transparent;
+ background-position: center bottom;
+ background-size: 100% 160%;
+}
+
+.subtitle2 {
+ color: rgb(40, 76, 238);
+ font-family: "TASA Orbiter", sans-serif;
+ font-size: 35px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
+ background-image: linear-gradient(180deg, #0f4a78 0%, #3972a0 60%, #8aa6d1 100%);
+ -webkit-background-clip: text;
+ background-clip: text;
+ -webkit-text-fill-color: transparent;
+ background-position: center bottom;
+ background-size: 100% 160%;
+}
+
+#logo {
+  width: 200px;
+  height: auto;
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 10;
+}
+
+#nav-bar{
+   display: flex;
+   align-items: center;
+   padding: 16px 24px 16px 340px;
+   gap: 28px; 
+   background: linear-gradient(315deg, #F4D081, #FFA101);
+   font-family: "TASA Orbiter", sans-serif;
+   position: relative;
+}
+#nav-bar {
+   display: flex;
+   align-items: center;
+   padding: 16px 24px 16px 340px; 
+   gap: 28px;
+   background: linear-gradient(90deg,#fff8ed 0%,#ffe6bf 12%,#ffd08a 25%,#ffb75a 40%,#ff9a26 55%,#ff7a00 70%,
+     #ff6200 82%,#ff4800 92%,#ff3500 100%
+   );
+   background-size: 100% 100%;
+   box-shadow: inset 0 -2px 10px rgba(0,0,0,0.06);
+   font-family: "TASA Orbiter", sans-serif;
+   position: relative;
+}
+
+.nav-link{
+  color: #006eff;
+  text-decoration: none;
+  padding: 12px 20px;
+  margin: 0 8px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px; 
 }
 
 #selectmain1, #selectmain2 {
-background-color: rgb(26, 158, 219);
-color:rgba(199, 253, 242, 0.945); 
-margin: 0 auto;
-display: inline;
-font-family: "TASA Orbiter", sans-serif;
-font-weight: bold;
-padding: 15px 32px;
-font-size: 16px;
-text-align: center;
+  display: inline-block;
+  background: linear-gradient(180deg, #f6fdff, #bfeaf8);
+  color: #fb6304;
+  margin: 18px 48px;
+  font-family: "TASA Orbiter", sans-serif;
+  font-weight: 800;
+  padding: 12px 32px;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 28px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 8px 18px rgba(17,85,120,0.06);
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+body.firstscreen > div {
+  text-align: center;
+}
+
+#selectmain1:hover, #selectmain2:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 22px rgba(17,85,120,0.12);
+}
+
+#selectmain1:active, #selectmain2:active {
+  transform: translateY(-1px);
 }
 
 .secondscreen {
@@ -49,63 +137,330 @@ align-items: center;
 }
 
 label {
-display: block;
-width: 100%;
-margin-top: 10px;
-margin-bottom: 5px;
-text-align: left;
-color: #555;
-font-weight: bold;
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  color: #036ab9;
+  letter-spacing: 0.5px;
+  font-family: "TASA Orbiter", sans-serif;
+  padding: 8px 12px;
+  background: linear-gradient(180deg, #f6fdff, #bfeaf8);
+  border-radius: 8px;
 }
 
+#text4, #text5 {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 12px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(74,111,165,0.9);
+  background: linear-gradient(180deg, #f6feff, #d7f0fb), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%2304253f' d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat, no-repeat;
+  background-position: right 12px center, right 12px center;
+  color: #0358ac;
+  cursor: pointer;
+  outline: none;
+  transition: 0.25s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 40px;
+}
+
+#text4::-ms-expand, #text5::-ms-expand { 
+    display: none; 
+}
+
+#final1, #final2 {
+  display: inline-block;
+  background: linear-gradient(180deg, #b2dfec, #bfeaf8);
+  color: #fb2904;
+  margin: 8px 24px;
+  font-family: "TASA Orbiter", sans-serif;
+  font-weight: 800;
+  padding: 10px 30px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 28px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 8px 18px rgba(17,85,120,0.06);
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+
 #instructions {
-margin-top: 20px;
-background: rgb(17, 232, 196);
-padding: 15px;
-border-radius: 10px;
-width: 500px;
-margin-left: auto;
-margin-right: auto;
-text-align: left;
+  display: none;
+}
+
+.instructions-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 32px;
+  align-items: start;
+  width: 100%;
+  max-width: 900px;
+}
+
+.form-row {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.form-block {
+  background: linear-gradient(180deg, #9ba6ec, #05c2e4);
+  padding: 12px;
+  border-radius: 10px;
+  width: 320px;
+  box-sizing: border-box;
+}
+
+.output-block {
+  width: 720px;
+  max-width: 92%;
+  background: linear-gradient(180deg, #fffaf0, #fff1d8);
+}
+
+.form-block label {
+  display: block;
+  margin-bottom: 8px;
+  background: transparent;
+  padding: 0;
+  color: #023b66;
+}
+
+.image-block img#image { 
+    display:block; 
+    max-width:100%; 
+    height:auto; 
+    margin: 8px auto; 
+    border-radius:6px; 
+}
+
+.actions-block {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-wrap: wrap;
+  padding: 4px;
+}
+
+.actions-block button {
+  flex: 1 1 90px;
+  min-width: 80px;
+  padding: 8px 10px;
+  font-size: 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: linear-gradient(180deg, #bfeaf8, #dff7fb);
+  color: #043a6b;
+}
+
+@media (max-width: 420px) {
+  .actions-block button {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .form-grid { grid-template-columns: 1fr; }
+  #logo { left: 8px; }
+  #nav-bar { padding-left: 220px; }
+  .form-row { flex-direction: column; align-items: center; }
+  .form-block { width: 100%; max-width: 420px; }
 }
 
 #output {
-margin-top: 20px;
-background: rgb(232, 227, 200);
-padding: 15px;
-border-radius: 10px;
-width: 500px;
-margin-left: auto;
-margin-right: auto;
-text-align: left;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1100px;
+  box-sizing: border-box;
+  padding: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: flex-start;
+  background: transparent; 
+}
+
+.lf-item {
+  background: linear-gradient(180deg, #3b86d5, #71a0cf);
+  border: 1px solid rgba(6, 120, 180, 0.06);
+  box-shadow: 0 6px 14px rgba(11,111,191,0.06);
+  padding: 14px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #023b66;
+  text-align: left;
+  width: calc(33.333% - 16px);
+  min-width: 220px;
+}
+
+.lf-item h4 {
+  margin: 6px 0 10px 0;
+  font-size: 18px;
+  color: #013a62;
+}
+
+@media (max-width: 960px) {
+  .lf-item { width: calc(50% - 16px); }
+}
+
+@media (max-width: 760px) {
+  .form-grid { grid-template-columns: 1fr; }
+  #logo { left: 8px; }
+  #nav-bar { padding-left: 220px; }
+  .form-row { flex-direction: column; align-items: center; }
+  .form-block { width: 100%; max-width: 420px; }
+  .lf-item { width: 100%; }
+}
+
+.instructions {
+  background: linear-gradient(180deg, #9cbed4, #98bbdf);
+  padding: 14px;
+  border-radius: 10px;
+  width: 320px;
+  box-sizing: border-box;
+  text-align: left;
 }
 
 .outputcode {
-    color: cornflowerblue;
-    font-size: 18px;
+  color: #083e78;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "TASA Orbiter", sans-serif;
+  text-align: center;
+  display: inline-block;
+  padding: 8px 14px;
+  margin: 6px 6px;
+  background: rgba(11,111,191,0.06);
+  border: 1px solid rgba(11,111,191,0.18);
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(11,111,191,0.04);
+  transform: translateY(-6px);
+}
+
+h2.outputcode { 
+    display: block; 
+    margin: 12px auto; 
+}
+
+.instructions h5.outputcode { 
+    display: block; 
+    margin: 8px auto; 
+    text-align: center; 
+}
+
+.outputcodepre {
+    color: rgb(116, 84, 232);
+    font-size: 16px;
     font-weight: bold;
     font-family: "TASA Orbiter", sans-serif;
     text-align: center;
 }
 
+
 .thirdscreen {
     background-image: radial-gradient( circle farthest-corner at 3.7% 49.8%,  rgba(143,232,255,1) 21.9%, rgba(209,243,251,1) 52.9% );
 }
 
-.search1 {
-flex-grow: 1; 
-padding: 8px 12px;
-border: none;
-font-size: 16px;
-outline: none; 
+#filterCategory, #filterLocation {
+ width: 100%;
+  max-width: 420px;
+  padding: 10px 12px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(74,111,165,0.9);
+  background: linear-gradient(180deg, #f6feff, #d7f0fb), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%2304253f' d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat, no-repeat;
+  background-position: right 12px center, right 12px center;
+  color: #0358ac;
+  cursor: pointer;
+  outline: none;
+  transition: 0.25s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 40px;
 }
 
-.searchicon {
-padding: 8px 15px;
-    background-color: #007bff;
-        color: rgb(23, 252, 214);
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            
+#applyFilterBtn, #clearFilterBtn, #clearAllBtn {
+  display: inline-block;
+  background: linear-gradient(180deg, #b2dfec, #bfeaf8);
+  color: #fb2904;
+  margin: 8px 24px;
+  font-family: "TASA Orbiter", sans-serif;
+  font-weight: 800;
+  padding: 10px 30px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 28px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 8px 18px rgba(17,85,120,0.06);
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+
+}
+
+.lf-item button {
+  display: inline-block;
+  background: linear-gradient(180deg, #b2dfec, #bfeaf8);
+  color: #fb2904;
+  margin-top: 10px;
+  font-family: "TASA Orbiter", sans-serif;
+  font-weight: 800;
+  padding: 8px 18px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 8px 18px rgba(17,85,120,0.06);
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.lf-item button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 22px rgba(17,85,120,0.12);
+}
+
+#file1 {
+  display: block;
+  background: linear-gradient(180deg, #b2dfec, #bfeaf8);
+  color: #fb2904;
+  margin: 1px 2px auto auto;
+  font-family: "TASA Orbiter", sans-serif;
+  font-weight: 800;
+  padding: 6px 14px;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 8px 18px rgba(17,85,120,0.06);
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+  width: auto;
 }

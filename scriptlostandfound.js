@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (catEl) {
       const current = catEl.value || '';
-      const cats = uniques(items.map(it => it.catego));
+      const cats = uniques(items.map(it => it.catego_text || it.catego || it.catego_value || ''));
       catEl.innerHTML = '';
       const optAll = document.createElement('option'); optAll.value = ''; optAll.textContent = 'All categories'; catEl.appendChild(optAll);
       cats.forEach(function(c) { const o = document.createElement('option'); o.value = c; o.textContent = c; catEl.appendChild(o); });
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (locEl) {
       const currentL = locEl.value || '';
-      const locs = uniques(items.map(it => it.locat));
+      const locs = uniques(items.map(it => it.locat_text || it.locat || it.locat_value || ''));
       locEl.innerHTML = '';
       const optAllL = document.createElement('option'); optAllL.value = ''; optAllL.textContent = 'All locations'; locEl.appendChild(optAllL);
       locs.forEach(function(l) { const o = document.createElement('option'); o.value = l; o.textContent = l; locEl.appendChild(o); });
@@ -100,18 +100,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const filtered = items.filter(function(item) {
       if (!item) return false;
-      if (filterCategory && String(item.catego || '') !== String(filterCategory)) return false;
-      if (filterLocation && String(item.locat || '') !== String(filterLocation)) return false;
+      if (filterCategory) {
+        const candidateCats = [item.catego_text, item.catego_value, item.catego, ''].filter(x => !!x);
+        if (!candidateCats.some(c => String(c) === String(filterCategory))) return false;
+      }
+      if (filterLocation) {
+        const candidateLocs = [item.locat_text, item.locat_value, item.locat, ''].filter(x => !!x);
+        if (!candidateLocs.some(l => String(l) === String(filterLocation))) return false;
+      }
       return true;
     });
 
     const visibleItems = filtered;
 
-    const clearBtn = document.createElement('button');
-    clearBtn.type = 'button';
-    clearBtn.textContent = 'Clear All';
-    clearBtn.addEventListener('click', function() { if (confirm('Clear all saved items?')) clearAll(); });
-    output.appendChild(clearBtn);
+  // Clear All button is part of the actions block in the page markup (see #clearAllBtn)
 
     if (!visibleItems.length) {
       const p = document.createElement('p');
@@ -131,12 +133,17 @@ document.addEventListener('DOMContentLoaded', function() {
         wrap.appendChild(img);
       }
 
-      ['name','date','desc','catego','locat'].forEach(function(key){
-        const p = document.createElement('p'); p.className = 'outputcode';
-        const label = key === 'name' ? 'The Items name: ' : key === 'date' ? 'Item was found on ' : key === 'desc' ? 'Item info: ' : key === 'catego' ? 'The type of item is: ' : 'Item was found in: ';
-        p.textContent = label + (item[key] || '');
-        wrap.appendChild(p);
-      });
+      const displayName = item.name || '';
+      const displayDate = item.date || '';
+      const displayDesc = item.desc || '';
+      const displayCatego = item.catego_text || item.catego || item.catego_value || '';
+      const displayLocat = item.locat_text || item.locat || item.locat_value || '';
+
+      const pName = document.createElement('p'); pName.className = 'outputcode'; pName.textContent = 'The Items name: ' + displayName; wrap.appendChild(pName);
+      const pDate = document.createElement('p'); pDate.className = 'outputcode'; pDate.textContent = 'Item was found on ' + displayDate; wrap.appendChild(pDate);
+      const pDesc = document.createElement('p'); pDesc.className = 'outputcode'; pDesc.textContent = 'Item info: ' + displayDesc; wrap.appendChild(pDesc);
+      const pCatego = document.createElement('p'); pCatego.className = 'outputcode'; pCatego.textContent = 'The type of item is: ' + displayCatego; wrap.appendChild(pCatego);
+      const pLocat = document.createElement('p'); pLocat.className = 'outputcode'; pLocat.textContent = 'Item was found in: ' + displayLocat; wrap.appendChild(pLocat);
 
       const del = document.createElement('button'); del.type = 'button'; del.textContent = 'Delete';
       del.addEventListener('click', function(){ if (confirm('Delete this item?')) deleteItemById(item.id); });
@@ -151,21 +158,31 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('lostItemForm');
     function handleSubmit(e) {
       if (e && e.preventDefault) e.preventDefault();
-      const names = document.getElementById('text1')?.value || '';
-      const date = document.getElementById('text2')?.value || '';
-      const desc = document.getElementById('text3')?.value || '';
-      const catego = document.getElementById('text4')?.value || '';
-      const locat = document.getElementById('text5')?.value || '';
+        const names = document.getElementById('text1')?.value || '';
+        const date = document.getElementById('text2')?.value || '';
+        const desc = document.getElementById('text3')?.value || '';
 
-      const item = {
-        id: Date.now(),
-        name: names,
-        date: date,
-        desc: desc,
-        catego: catego,
-        locat: locat,
-        image: window._lf_image || ''
-      };
+        
+        const categoEl = document.getElementById('text4');
+        const locatEl = document.getElementById('text5');
+        const catego_value = categoEl ? categoEl.value : '';
+        const catego_text = (function(){ if (!categoEl) return ''; const opt = categoEl.options[categoEl.selectedIndex]; return opt ? opt.text : catego_value; })();
+        const locat_value = locatEl ? locatEl.value : '';
+        const locat_text = (function(){ if (!locatEl) return ''; const opt = locatEl.options[locatEl.selectedIndex]; return opt ? opt.text : locat_value; })();
+
+        const item = {
+          id: Date.now(),
+          name: names,
+          date: date,
+          desc: desc,
+          catego: catego_text || catego_value,
+          catego_value: catego_value,
+          catego_text: catego_text,
+          locat: locat_text || locat_value,
+          locat_value: locat_value,
+          locat_text: locat_text,
+          image: window._lf_image || ''
+        };
 
       const items = getItems();
       items.push(item);
@@ -185,12 +202,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const applyBtn = document.getElementById('applyFilterBtn');
   const clearFilterBtn = document.getElementById('clearFilterBtn');
+  const clearAllBtn = document.getElementById('clearAllBtn');
   if (applyBtn) applyBtn.addEventListener('click', function(){ renderItems(); });
   if (clearFilterBtn) clearFilterBtn.addEventListener('click', function(){
     const catEl = document.getElementById('filterCategory'); if (catEl) catEl.value = '';
     const locEl = document.getElementById('filterLocation'); if (locEl) locEl.value = '';
     renderItems();
   });
+  if (clearAllBtn) clearAllBtn.addEventListener('click', function(){ if (confirm('Clear all saved items?')) clearAll(); });
 
   renderItems();
 });
@@ -223,7 +242,7 @@ var loadFile = function(event) {
     img.src = url;
   }
 
-  compress(file, 400, 0.5, function(dataUrl) {
+  compress(file, 300, 0.6, function(dataUrl) {
     if (!dataUrl) return;
     window._lf_image = dataUrl;
     if (imageout) imageout.src = dataUrl;

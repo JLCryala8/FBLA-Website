@@ -8,6 +8,7 @@
     
 </head>
 <body class="secondscreen">
+    <img id="logo" src="https://cdnsm5-ss18.sharpschool.com/UserFiles/Servers/Server_25708315/Image/mustangLogo2.png">
     <nav id="nav-bar">
   <a class="nav-link" href="#Home" onclick="screens0()">Home</a>
   <a class="nav-link" href="#About" onclick="screensAbout()">About</a>
@@ -15,55 +16,95 @@
   <a class="nav-link" href="#Support">Support</a>
   </nav>
 
-    <h1 class="subtitle2">Report a Lost Item</h1>
-    <form id="lostItemForm">
-    <fieldset class="subsecondscreen">
-    <div>
-        <label for="text1">Item Name(try to be specific):</label>
-        <input type="text" id="text1">
-        <label for="text2">Date(when was it found/lost):</label>
-        <input type="date" id="text2">
-        <label for="text3">Item Description:</label>
-        <input type="text" id="text3">
-        <label for="itemdropdown">Item's Category:</label>
-        <select id="text4">
-            <option value="">Please Choose an Option</option>
-            <option value="clothing">Clothing</option>
-            <option value="schoolItems">School Items</option>
-            <option value="bottles/container">Bottles/Containers</option>
-            <option value="electronics">Electronics/Devices</option>
-            <option value="toys">Toys</option>
-            <option value="stationary">Stationary Materials</option>
-        </select>
-        <label for="locationdropwdown">Location where item was found/lost:</label>
-        <select id="text5">
-            <option value="">Please Choose an Option</option>
-            <option value="performarts">Performing Arts Building/Library</option>
-            <option value="mcamplunch">Main Campus Lunch Area</option>
-            <option value="stemlunch">Stem Lunch Area</option>
-            <option value="A/B Building">A/B Building</option>
-            <option value="C/D">C/D Bulding</option>
-            <option value="E/F">E/F Building</option>
-            <option value="stemcampus">STEM Campus</option>
-            <option value="p.e">P.E./Gym Area</option>
-        </select>
-        <label for="file1">Image of Item:</label>
-        <img id="image" alt="preview of image">
-        <label for="input-file"></label>
-        <input type="file" id="file1" accept="image/*" onchange ="loadFile(event)">
-        <input type="submit" id="final1">
-        <input type="reset" id="final2">       
+    <h1 class="subtitle2">Report a Lost Item(Input in dark blue boxes)</h1>
+        <form id="lostItemForm">
+        <fieldset class="subsecondscreen">
+            <div class="form-row">
+                <div class="form-block">
+                    <label for="text1">Item Name (try to be specific):</label>
+                    <input type="text" id="text1">
+                </div>
 
-    </div>
-    </fieldset>
-    </form>
+                <div class="form-block">
+                    <label for="text2">Date (when was it found/lost):</label>
+                    <input type="date" id="text2">
+                </div>
 
+                <div class="form-block">
+                    <label for="text3">Item Description:</label>
+                    <input type="text" id="text3">
+                </div>
 
-    <div id="instructions">
-     <h2>Writing name of item:</h2>
-     <p2>When writing the name of the item, it's best to include the brand name </p2>
-    </div>
+                <div class="form-block">
+                    <label for="itemdropdown">Item's Category:</label>
+                    <select id="text4">
+                            <option value="">Please Choose an Option</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="schoolItems">School Items</option>
+                            <option value="bottles/container">Bottles/Containers</option>
+                            <option value="electronics">Electronics/Devices</option>
+                            <option value="toys">Toys</option>
+                            <option value="stationary">Stationary Materials</option>
+                    </select>
+                </div>
 
+                <div class="form-block">
+                    <label for="locationdropwdown">Location where item was found/lost:</label>
+                    <select id="text5">
+                            <option value="">Please Choose an Option</option>
+                            <option value="performarts">Performing Arts Building/Library</option>
+                            <option value="mcamplunch">Main Campus Lunch Area</option>
+                            <option value="stemlunch">Stem Lunch Area</option>
+                            <option value="A/B Building">A/B Building</option>
+                            <option value="C/D">C/D Bulding</option>
+                            <option value="E/F">E/F Building</option>
+                            <option value="stemcampus">STEM Campus</option>
+                            <option value="p.e">P.E./Gym Area</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row form-row-bottom">
+                <div class="form-block image-block">
+                    <label for="file1">Image of Item:</label>
+                    <img id="image" alt="preview of image">
+                    <input type="file" id="file1" accept="image/*" onchange ="loadFile(event)">
+                </div>
+
+                <div class="form-block actions-block">
+                    <input type="submit" id="final1" value="Submit">
+                    <input type="reset" id="final2" value="Reset">
+                </div>
+            </div>
+        </fieldset>
+        </form>
+
+        <h2 class="outputcode">Instructions for Reporting Lost Items:</h2>
+
+        <div class="instructions-row">
+            <div class="instructions">     
+             <h3 class="outputcode">When writing name of item:</h3>
+             <p3 class="outputcodepre">It's best to include the brand name of the item</p3>
+            </div>
+
+            <div class="instructions">
+                 <h5 class="outputcode">About Reporting Lost Items</h5>
+                 <p5 class="outputcodepre">If you found a lost item from someone else, input as normal. Once someone got your inputted item,
+                    they will press the found button. The item will be shortly deleted by admin.        
+                 </p5>
+            </div>
+
+            <div class="instructions">
+             <h4 class="outputcode">When writing the description of item</h4>
+             <p4 class="outputcodepre">It should be brief but descriptive of the item's features and condition</p4>
+            </div>
+
+            <div class="instructions">
+                <h5 class="outputcode">After item is submitted</h5>
+                <p5 class="outputcodepre">The form will reset and submitted to be approved by admin. Once approved, the item will be visible to all users.
+                </p5>
+            </div>
+        </div>
 
 <script src="scriptlostandfound.js"></script>
 </body>

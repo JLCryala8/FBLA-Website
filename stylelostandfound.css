@@ -143,7 +143,7 @@ body.firstscreen > div {
 }
 
 .subsecondscreen {
-background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(170,245,248,1) 0%, rgba(248,162,239,0.8) 90% );
+background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(14, 121, 215) 0%, rgba(10, 142, 230, 0.8) 90% );
 display: flex;
 justify-content: center;
 align-items: center; 
@@ -379,7 +379,7 @@ label {
   display: inline-block;
   padding: 8px 14px;
   margin: 6px 6px;
-  background: rgba(11,111,191,0.06);
+  background: rgba(56, 140, 208, 0.06);
   border: 1px solid rgba(11,111,191,0.18);
   border-radius: 8px;
   box-shadow: 0 3px 8px rgba(11,111,191,0.04);

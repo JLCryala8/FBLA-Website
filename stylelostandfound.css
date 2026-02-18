@@ -1,6 +1,6 @@
 
 .firstscreen {
-background-image: radial-gradient( circle farthest-corner at 3.7% 49.8%,  rgba(143,232,255,1) 21.9%, rgba(209,243,251,1) 52.9% );
+background-image: radial-gradient( circle farthest-corner at 3.7% 49.8%,  rgb(120, 212, 235) 21.9%, rgb(86, 206, 234) 52.9% );
 }
 
 .start1 {
@@ -29,7 +29,7 @@ background-image: radial-gradient( circle farthest-corner at 3.7% 49.8%,  rgba(1
  justify-content: center;
  align-items: center;
  text-align: center;
- background-image: linear-gradient(180deg, #0f4a78 0%, #3972a0 60%, #8aa6d1 100%);
+ background-image: linear-gradient(180deg, #1961de 0%, #2a0add 60%, #2b38e7 100%);
  -webkit-background-clip: text;
  background-clip: text;
  -webkit-text-fill-color: transparent;
@@ -45,7 +45,7 @@ background-image: radial-gradient( circle farthest-corner at 3.7% 49.8%,  rgba(1
  justify-content: center;
  align-items: center;
  text-align: center;
- background-image: linear-gradient(180deg, #0f4a78 0%, #3972a0 60%, #8aa6d1 100%);
+ background-image: linear-gradient(180deg, #001f3f 0%, #003366 55%, #335e9a 100%);
  -webkit-background-clip: text;
  background-clip: text;
  -webkit-text-fill-color: transparent;
@@ -190,8 +190,8 @@ label {
 
 #final1, #final2 {
   display: inline-block;
-  background: linear-gradient(180deg, #0a59ec, #565ed1);
-  color: #fb0404;
+  background: linear-gradient(180deg, #4778d4, #5c63be);
+  color: #fd0606;
   margin: 8px 24px;
   font-family: "TASA Orbiter", sans-serif;
   font-weight: 800;
@@ -407,7 +407,7 @@ label {
 }
 
 .instructions {
-  background: linear-gradient(180deg, #4e98d8, #1271d1);
+  background: linear-gradient(180deg, #0080ef, #1271d1);
   padding: 14px;
   border-radius: 10px;
   width: 320px;
@@ -425,7 +425,7 @@ label {
   padding: 8px 14px;
   margin: 6px 6px;
   background: rgba(56, 140, 208, 0.06);
-  border: 1px solid rgba(11,111,191,0.18);
+  border: 1px solid rgba(4, 41, 71, 0.18);
   border-radius: 8px;
   box-shadow: 0 3px 8px rgba(11,111,191,0.04);
   transform: translateY(-6px);

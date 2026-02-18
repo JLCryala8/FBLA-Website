@@ -252,3 +252,103 @@ var loadFile = function(event) {
   });
 };
 
+
+
+
+
+
+
+async function createUser() {
+  const userData = {
+    name: "Jackson",
+    userId: 1234,
+    itemName: "Backpack",
+    day: 10,
+    month: 2,
+    year: 2026,
+    category: "Electronics",
+    location: "Library",
+    isFound: false
+  };
+
+  const response = await fetch("http://localhost:8080/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(userData)
+  });
+
+  const data = await response.json();
+  console.log("Created:", data);
+}
+
+async function getUsers() {
+  const response = await fetch("http://localhost:8080/users");
+  const users = await response.json();
+
+  console.log(users);
+
+  const container = document.getElementById("results");
+  container.innerHTML = "";
+
+  users.forEach(user => {
+    container.innerHTML += `
+      <div class="card">
+        <h3>${user.itemName}</h3>
+        <p>Name: ${user.name}</p>
+        <p>Location: ${user.location}</p>
+        <p>Status: ${user.isFound ? "Found" : "Lost"}</p>
+      </div>
+    `;
+  });
+}
+
+async function searchItem() {
+  const item = document.getElementById("searchInput").value;
+
+  const response = await fetch(
+    `http://localhost:8080/users/search?itemName=${item}`
+  );
+
+  const results = await response.json();
+  console.log(results);
+}
+
+async function uploadImage(userId) {
+  const fileInput = document.getElementById("imageInput");
+  const file = fileInput.files[0];
+
+  const formData = new FormData();
+  formData.append("file", file);
+
+  await fetch(`http://localhost:8080/users/${userId}/image`, {
+    method: "POST",
+    body: formData
+  });
+
+  alert("Image uploaded!");
+}
+
+document.getElementById("reportForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const data = {
+    name: document.getElementById("name").value,
+    itemName: document.getElementById("itemName").value,
+    location: document.getElementById("location").value,
+    day: 17,
+    month: 2,
+    year: 2026,
+    category: "Other",
+    isFound: false
+  };
+
+  await fetch("http://localhost:8080/users", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+
+  alert("Report submitted!");
+});

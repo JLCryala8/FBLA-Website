@@ -2,6 +2,7 @@
 package com.example.demo;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "users")
 public class User {
@@ -9,6 +10,7 @@ public class User {
     private String ID; // ID to auto-increment for MongoDB
     
 
+    @Field("userNumber") // New field for user number
     private Long userNumber; // New field for user number
     private String name;
     private int userId;
@@ -124,7 +126,7 @@ public class User {
     public String getImageType(){ 
         return imageType;
     }
-    
+
     public void setImageType(String imageType){ 
         this.imageType = imageType; 
     }

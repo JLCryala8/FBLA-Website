@@ -47,6 +47,14 @@ public class UserService {
         return userRepository.findByItemNameContainingIgnoreCase(itemName.toUpperCase());
     }
 
+    public List<User> findByUserId(int userId){
+        return userRepository.findByUserId(userId);
+    }
+
+    public List<User> findByUserNumber(Long userNumber){
+        return userRepository.findByUserNumber(userNumber).map(List::of).orElse(List.of());
+    }
+
     public List<User> findByDay(int day){
         return userRepository.findByDay(day);
     }
@@ -72,7 +80,7 @@ public class UserService {
     }
 
     // Combined search method
-    public List<User> searchUsers(String name, String itemName, Integer day, Integer month, Integer year, String category, String location, Boolean isFound){
+    public List<User> searchUsers(String name, String itemName, Integer day, Integer month, Integer year, String category, String location, Boolean isFound, Integer userId, Long userNumber){
         if (name != null) {
             return userRepository.findByNameContainingIgnoreCase(name.toUpperCase());
         } else if (itemName != null) {
@@ -89,6 +97,10 @@ public class UserService {
             return userRepository.findByLocation(location);
         } else if (isFound != null) {
             return userRepository.findByIsFound(isFound);
+        } else if (userId != null) {
+            return userRepository.findByUserNumber((long) userId).map(List::of).orElse(List.of());
+        } else if (userNumber != null) {
+            return userRepository.findByUserNumber(userNumber).map(List::of).orElse(List.of());
         } else {
             return userRepository.findAll();
         }
@@ -106,6 +118,7 @@ public class UserService {
             existingUser.setCategory(user.getCategory());
             existingUser.setLocation(user.getLocation());
             existingUser.setIsFound(user.getIsFound());
+            existingUser.setUserId(String.valueOf(user.getUserId()));  
             return userRepository.save(existingUser); // Save the updated user
         } else {
             return null;

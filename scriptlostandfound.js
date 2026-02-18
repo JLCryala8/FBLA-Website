@@ -14,6 +14,11 @@ function screens0() {
 function screensAbout() {
   window.location.href = "about.html";
 }
+
+function screensAdmin() {
+  window.location.href = "admin.html";
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   const finalBtn = document.getElementById('final1');
   const MAX_BYTES = 1024 * 1024 * 4;
@@ -112,8 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const visibleItems = filtered;
-
-  // Clear All button is part of the actions block in the page markup (see #clearAllBtn)
 
     if (!visibleItems.length) {
       const p = document.createElement('p');

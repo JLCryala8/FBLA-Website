@@ -143,7 +143,7 @@ body.firstscreen > div {
 }
 
 .subsecondscreen {
-background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(14, 121, 215) 0%, rgba(10, 142, 230, 0.8) 90% );
+background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(61, 50, 214) 0%, rgba(67, 72, 220, 0.8) 90% );
 display: flex;
 justify-content: center;
 align-items: center; 
@@ -190,8 +190,8 @@ label {
 
 #final1, #final2 {
   display: inline-block;
-  background: linear-gradient(180deg, #b2dfec, #bfeaf8);
-  color: #fb2904;
+  background: linear-gradient(180deg, #0a59ec, #565ed1);
+  color: #fb0404;
   margin: 8px 24px;
   font-family: "TASA Orbiter", sans-serif;
   font-weight: 800;
@@ -244,6 +244,39 @@ label {
   flex: 1 1 320px;
   max-width: 420px;
   min-width: 220px;
+}
+
+.secondscreen .form-block {
+  background: #0b3d91;
+}
+
+.secondscreen .form-block label {
+  color: #cfe6ff;
+}
+
+.secondscreen .form-block input,
+.secondscreen .form-block select,
+.secondscreen .form-block textarea {
+  background: #184f9e;
+  border: 1px solid rgba(0,0,0,0.12);
+  color: #e6f2ff;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.secondscreen .form-block input::placeholder,
+.secondscreen .form-block textarea::placeholder {
+  color: rgba(230,242,255,0.7);
+}
+
+.secondscreen .form-block input[type="submit"],
+.secondscreen .form-block input[type="reset"],
+.secondscreen .form-block .actions-block button,
+.secondscreen .form-block #file1 {
+  background: #1a53a8;
+  color: #eaf6ff;
+  border: 1px solid rgba(0,0,0,0.12);
+  box-shadow: 0 6px 14px rgba(11,111,191,0.06);
 }
 
 .output-block {
@@ -330,13 +363,13 @@ label {
 }
 
 .lf-item {
-  background: linear-gradient(180deg, #3b86d5, #71a0cf);
-  border: 1px solid rgba(6, 120, 180, 0.06);
+  background: linear-gradient(180deg, #184f9e, #163f7a);
+  border: 1px solid rgba(0,0,0,0.12);
   box-shadow: 0 6px 14px rgba(11,111,191,0.06);
   padding: 14px;
   border-radius: 10px;
   box-sizing: border-box;
-  color: #023b66;
+  color: #e6f2ff;
   text-align: left;
   width: calc(33.333% - 16px);
   min-width: 220px;
@@ -345,7 +378,19 @@ label {
 .lf-item h4 {
   margin: 6px 0 10px 0;
   font-size: 18px;
-  color: #013a62;
+  color: #eaf6ff;
+}
+
+.lf-item .outputcode {
+  color: #eaf6ff;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: none;
+  transform: none;
+  display: block;
+  padding: 6px 10px;
+  margin: 6px 0;
+  border-radius: 6px;
 }
 
 @media (max-width: 960px) {
@@ -416,11 +461,11 @@ h2.outputcode {
   padding: 10px 12px;
   font-size: 15px;
   border-radius: 8px;
-  border: 1px solid rgba(74,111,165,0.9);
-  background: linear-gradient(180deg, #f6feff, #d7f0fb), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%2304253f' d='M7 10l5 5 5-5z'/></svg>");
+  border: 1px solid rgba(0,0,0,0.12);
+  background: linear-gradient(180deg,#1c60be,#1559b8), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23eaf6ff' d='M7 10l5 5 5-5z'/></svg>");
   background-repeat: no-repeat, no-repeat;
   background-position: right 12px center, right 12px center;
-  color: #0358ac;
+  color: #e6f2ff;
   cursor: pointer;
   outline: none;
   transition: 0.25s ease;
@@ -428,6 +473,41 @@ h2.outputcode {
   -moz-appearance: none;
   appearance: none;
   padding-right: 40px;
+}
+
+.thirdscreen .form-block {
+  background: #0e47aa;
+}
+
+.thirdscreen .form-block label {
+  color: #cfe6ff;
+}
+
+.thirdscreen .form-block input,
+.thirdscreen .form-block select,
+.thirdscreen .form-block textarea {
+  background: #184f9e;
+  border: 1px solid rgba(0,0,0,0.12);
+  color: #e6f2ff;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.thirdscreen #filterCategory, .thirdscreen #filterLocation {
+  background: linear-gradient(180deg,#184f9e,#163f7a), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23eaf6ff' d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat, no-repeat;
+  background-position: right 12px center, right 12px center;
+  color: #e6f2ff;
+  border: 1px solid rgba(0,0,0,0.12);
+  padding-right: 40px;
+}
+
+.thirdscreen .form-block input[type="submit"],
+.thirdscreen .form-block input[type="reset"],
+.thirdscreen .form-block .actions-block button {
+  background: #163f7a;
+  color: #eaf6ff;
+  border: 1px solid rgba(0,0,0,0.12);
 }
 
 #applyFilterBtn, #clearFilterBtn, #clearAllBtn {

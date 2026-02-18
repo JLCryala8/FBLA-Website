@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const pDesc = document.createElement('p'); pDesc.className = 'outputcode'; pDesc.textContent = 'Item info: ' + displayDesc; wrap.appendChild(pDesc);
       const pCatego = document.createElement('p'); pCatego.className = 'outputcode'; pCatego.textContent = 'The type of item is: ' + displayCatego; wrap.appendChild(pCatego);
       const pLocat = document.createElement('p'); pLocat.className = 'outputcode'; pLocat.textContent = 'Item was found in: ' + displayLocat; wrap.appendChild(pLocat);
-
+    
       const del = document.createElement('button'); del.type = 'button'; del.textContent = 'Delete';
       del.addEventListener('click', function(){ if (confirm('Delete this item?')) deleteItemById(item.id); });
       wrap.appendChild(del);

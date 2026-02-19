@@ -119,3 +119,18 @@ async function uploadImage(userNumber) {
     body: formData
   });
 }
+<form id="reportForm">
+
+  <input type="text" id="name" placeholder="Your Name" required>
+  <input type="text" id="itemName" placeholder="Item Name" required>
+  <input type="text" id="itemDescription" placeholder="Description" required>
+  <input type="date" id="date" required>
+  <input type="text" id="category" placeholder="Category" required>
+  <input type="text" id="location" placeholder="Location" required>
+
+  <!-- 🔥 THIS IS THE IMAGE INPUT -->
+  <input type="file" id="imageInput" accept="image/*">
+
+  <button type="submit">Submit</button>
+
+</form>

@@ -1,0 +1,16 @@
+async function fetchItems() {
+  try {
+    const response = await fetch("http://localhost:8080/users");
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch items");
+    }
+
+    const data = await response.json();
+    return data;
+
+  } catch (error) {
+    console.error("Error fetching items:", error);
+    return [];
+  }
+}

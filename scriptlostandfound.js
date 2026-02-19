@@ -19,6 +19,27 @@ function screensAdmin() {
   window.location.href = "admin.html";
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+
+  const adminBtn = document.getElementById("admins");
+
+  adminBtn.addEventListener("click", function(event) {
+
+    event.preventDefault(); 
+
+    const password = prompt("Enter admin password:");
+
+    if (password === "everydaylost123") {  
+      window.location.href = "admin.html";
+    } else {
+      alert("Incorrect password!");
+      window.location.href = "lostandfound1.html";
+    }
+
+  });
+
+});
+
 document.addEventListener('DOMContentLoaded', function() {
   const finalBtn = document.getElementById('final1');
   const MAX_BYTES = 1024 * 1024 * 4;
@@ -148,9 +169,19 @@ document.addEventListener('DOMContentLoaded', function() {
       const pCatego = document.createElement('p'); pCatego.className = 'outputcode'; pCatego.textContent = 'The type of item is: ' + displayCatego; wrap.appendChild(pCatego);
       const pLocat = document.createElement('p'); pLocat.className = 'outputcode'; pLocat.textContent = 'Item was found in: ' + displayLocat; wrap.appendChild(pLocat);
     
-      const del = document.createElement('button'); del.type = 'button'; del.textContent = 'Delete';
-      del.addEventListener('click', function(){ if (confirm('Delete this item?')) deleteItemById(item.id); });
+      if (window.location.pathname.includes("admin.html")) {
+      const del = document.createElement('button');
+      del.type = 'button';
+      del.textContent = 'Delete';
+
+      del.addEventListener('click', function() {
+      if (confirm('Delete this item?')) {
+        deleteItemById(item.id);
+      }
+      });
+
       wrap.appendChild(del);
+      } 
 
       output.appendChild(wrap);
       const hr = document.createElement('hr'); output.appendChild(hr);
@@ -352,3 +383,9 @@ document.getElementById("reportForm").addEventListener("submit", async function(
 
   alert("Report submitted!");
 });
+
+fetch("http://localhost:8080/users")
+ .then(response => response.json())
+ .then(data => {
+  console.log(data);
+ });

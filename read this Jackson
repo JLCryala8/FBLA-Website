@@ -1,16 +1,121 @@
-async function fetchItems() {
+// put this at the top
+const API_URL = "http://localhost:8080/users";
+
+async function fetchUsers() {
+  const response = await fetch(API_URL);
+  if (!response.ok) throw new Error("Failed to fetch users");
+  return await response.json();
+}
+
+async function createUser(data) {
+  const response = await fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+
+  if (!response.ok) throw new Error("Failed to create user");
+  return await response.json();
+}
+
+async function deleteUser(id) {
+  await fetch(`${API_URL}/${id}`, {
+    method: "DELETE"
+  });
+}
+
+// render items
+async function renderItems() {
+  const output = document.getElementById("output");
+  if (!output) return;
+
+  output.innerHTML = "";
+
   try {
-    const response = await fetch("http://localhost:8080/users");
+    const users = await fetchUsers();
 
-    if (!response.ok) {
-      throw new Error("Failed to fetch items");
-    }
+    users.forEach(user => {
+      const div = document.createElement("div");
+      div.className = "card";
 
-    const data = await response.json();
-    return data;
+      div.innerHTML = `
+        <h3>${user.itemName}</h3>
+        <p><strong>Name:</strong> ${user.name}</p>
+        <p><strong>Description:</strong> ${user.itemDescription}</p>
+        <p><strong>Date:</strong> ${user.date}</p>
+        <p><strong>Category:</strong> ${user.category}</p>
+        <p><strong>Location:</strong> ${user.location}</p>
+        <p><strong>Status:</strong> ${user.isFound ? "Found" : "Lost"}</p>
+        <img src="${API_URL}/${user.userNumber}/image" 
+             alt="Item Image"
+             style="max-width:200px; display:block; margin-top:10px;"
+             onerror="this.style.display='none'" />
+        <button onclick="handleDelete('${user.id}')">Delete</button>
+        <hr/>
+      `;
 
-  } catch (error) {
-    console.error("Error fetching items:", error);
-    return [];
+      output.appendChild(div);
+    });
+
+  } catch (err) {
+    console.error(err);
   }
+}
+
+// delete
+async function handleDelete(id) {
+  if (!confirm("Delete this item?")) return;
+
+  await deleteUser(id);
+  renderItems();
+}
+// upload documents
+document.addEventListener("DOMContentLoaded", function() {
+
+  const form = document.getElementById("reportForm");
+
+  if (form) {
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const data = {
+        name: document.getElementById("name").value,
+        itemName: document.getElementById("itemName").value,
+        itemDescription: document.getElementById("itemDescription").value,
+        date: document.getElementById("date").value,
+        category: document.getElementById("category").value,
+        location: document.getElementById("location").value,
+        isFound: false
+      };
+
+      const createdUser = await createUser(data);
+
+      // If image selected, upload it
+      const fileInput = document.getElementById("imageInput");
+      if (fileInput && fileInput.files.length > 0) {
+        await uploadImage(createdUser.userNumber);
+      }
+
+      form.reset();
+      renderItems();
+    });
+  }
+
+  renderItems();
+});
+
+// upload image
+async function uploadImage(userNumber) {
+  const fileInput = document.getElementById("imageInput");
+  const file = fileInput.files[0];
+
+  if (!file) return;
+
+  const formData = new FormData();
+  formData.append("file", file);
+
+  await fetch(`${API_URL}/${userNumber}/image`, {
+    method: "POST",
+    body: formData
+  });
 }
